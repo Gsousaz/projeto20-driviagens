@@ -7,5 +7,13 @@ export function errorHandler(error, req, res, next) {
     return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(error.message);
   }
 
-  return res.status(httpStatus.INTERNAL_SERVER_ERROR).send("Ocorreu um erro :(")
+  if (error.code === "23505" && error.constraint === "cities_name_key") {
+    return res
+      .status(httpStatus.CONFLICT)
+      .send("Esta cidade já foi adicionada");
+  }
+
+  return res
+    .status(httpStatus.INTERNAL_SERVER_ERROR)
+    .send("Ocorreu um erro :(");
 }
