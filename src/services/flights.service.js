@@ -1,3 +1,4 @@
+
 import dayjs from "dayjs";
 import { errors } from "../errors/errors.js";
 import { flightRepository } from "../repositories/flights.repository.js";
@@ -14,4 +15,9 @@ async function createFlight(origin, destination, date) {
   await flightRepository.createFlight(origin, destination, date);
 }
 
-export const flightService = { createFlight };
+async function returnFlights(origin, destination, biggerDate, smallerDate) {
+  const queryResult = await flightRepository.returnFlights(origin, destination, biggerDate, smallerDate);
+  return queryResult;
+}
+
+export const flightsService = { createFlight, returnFlights };

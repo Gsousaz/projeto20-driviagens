@@ -7,7 +7,11 @@ async function createPassenger(req, res) {
   res.sendStatus(httpStatus.CREATED);
 }
 
-async function showPassengersTravelsNumber(req, res) {}
+async function showPassengersTravelsNumber(req, res) {
+  const { name } = req.query;
+  const result = await passengerService.showPassengersTravelsNumber(name);
+  res.status(httpStatus.OK).send(result);
+}
 
 export const passengerController = {
   createPassenger,
