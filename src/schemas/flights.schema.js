@@ -3,7 +3,7 @@ import joiDate from "@joi/date";
 
 export const flightsSchema = Joi.object({
   origin: Joi.number().required().messages({
-    "string.base": `"Origem" é um campo do tipo number`,
+    "number.base": `"Origem" é um campo do tipo number`,
     "any.required": `O campo "origem" é obrigatório`,
   }),
   destination: Joi.number().required().messages({

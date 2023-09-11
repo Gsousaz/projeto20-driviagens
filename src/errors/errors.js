@@ -13,11 +13,10 @@ function duplicityError() {
 }
 
 function pastDateError() {
-    return {
-        type: "dateError",
-        message: "A data inserida já passou!"
-    }
+  return {
+    type: "dateError",
+    message: "A data inserida já passou!",
+  };
 }
- 
 
 export const errors = { joiError, duplicityError, pastDateError };
